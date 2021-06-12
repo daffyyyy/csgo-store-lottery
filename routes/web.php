@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\SteamLoginController;
+use kanalumaddela\LaravelSteamLogin\Facades\SteamLogin;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+SteamLogin::routes([
+    'controller' => SteamLoginController::class,
+]);
+
 Route::get('/', function () {
     return view('welcome');
 });
+
