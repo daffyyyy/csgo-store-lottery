@@ -10,6 +10,9 @@ module.exports = {
   },
   variants: {
     extend: {},
+    display: ['responsive', 'dropdown'],
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-dropdown')
+  ],
 }

@@ -1,3 +1,48 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    a,
+    a:visited {
+        @apply text-white;
+        @apply no-underline;
+    }
+    a:hover,
+    a:focus {
+        @apply text-indigo-500;
+        @apply underline;
+    }
+    input {
+        @apply bg-gray-900;
+        @apply border;
+        @apply border-indigo-600;
+        @apply text-gray-300;
+    }
+    label {
+        @apply text-gray-300;
+    }
+    .header .site-title a {
+        @apply text-indigo-600;
+    }
+    .header a:hover {
+        @apply text-gray-200;
+        @apply no-underline !important;
+    }
+    .header a:focus {
+        @apply no-underline !important;
+    }
+
+    .dropdown\:block ul {
+        @apply bg-indigo-700;
+        @apply rounded-lg;
+    }
+    .dropdown\:block ul>li {
+        @apply px-4;
+        @apply py-2;
+    }
+    .dropdown\:block ul>li:hover {
+        @apply bg-indigo-800;
+        @apply rounded-lg;
+    }
+}
