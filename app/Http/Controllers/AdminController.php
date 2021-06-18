@@ -48,8 +48,7 @@ class AdminController extends Controller
         }
 
         $new = (new AwardsService())->create($data);
-        $new = isset($new['success']) ? ['success' => $new['success']] : ['error' => $new['error']];
-
+        
         return redirect()->back()->with($new);
     }
 

@@ -44,7 +44,10 @@ class AwardsService
                 break;
         }
 
-        if (isset($this->data['error'])) return $this->data;
+        if (isset($this->data['error'])) {
+            unset($this->data['success']);
+            return $this->data;
+        } 
         
         $award->stock--;
         $award->save();
