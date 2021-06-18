@@ -94,9 +94,8 @@ class AwardsController extends Controller
     public function redeem(Awards $awards)
     {
         $data = (New AwardsService())->redeem($awards);
+        $data = isset($data['success']) ? ['success' => $data['success']] : ['error' => $data['error']];
 
-        if (isset($data['error'])) return redirect()->back()->with('error', $data['error']);
-
-        return redirect()->back()->with('success', $data['success']);
+        return redirect()->back()->with($data);
     }
 }

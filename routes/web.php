@@ -52,6 +52,8 @@ Route::group(['middleware' => ['auth']], function () {
 Route::group(['middleware' => ['admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('awards', [AdminController::class, 'awards'])->name('awards');
     Route::get('awards/edit/{awards}', [AdminController::class, 'edit'])->name('awards.edit');
-    Route::delete('awards/delete/{awards}', [AdminController::class, 'destroy'])->name('awards.destroy');
+    Route::get('awards/add/', [AdminController::class, 'add'])->name('awards.add');
     Route::post('awards/update/{awards}', [AdminController::class, 'update'])->name('awards.update');
+    Route::put('awards/create/', [AdminController::class, 'create'])->name('awards.create');
+    Route::delete('awards/delete/{awards}', [AdminController::class, 'destroy'])->name('awards.destroy');
 });

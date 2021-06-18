@@ -61,6 +61,7 @@ class AwardsService
 
     public function create(array $data)
     {
+        if (!$data['days']) $data['days'] = NULL;
         if (Awards::create($data)) {
             $this->data['success'] = "Pomyślnie utworzyłeś nową nagrodę.";
         } else {
@@ -86,7 +87,7 @@ class AwardsService
 
     public function getAwardType(Awards $award)
     {
-        return $this->type[$award->type];
+        return $this->types[$award->type];
     }
 
 }

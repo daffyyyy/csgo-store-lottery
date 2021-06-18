@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateAwardsRequest;
 use App\Http\Requests\UpdateAwardsRequest;
 use App\Models\Awards;
 use App\Services\AwardsService;
@@ -28,6 +29,28 @@ class AdminController extends Controller
         $types = (new AwardsService())->getAwardTypes();
 
         return view('admin.awards.edit')->with(['awards' => $awards, 'types' => $types]);
+    }
+
+    public function add()
+    {
+        $types = (new AwardsService())->getAwardTypes();
+
+        return view('admin.awards.add')->with('types', $types);
+    }
+
+    public function create(CreateAwardsRequest $request)
+    {
+        $data = $request->validated();
+
+        if ($request->hasFile('file')) {
+            $file = $request->file('file')->store('awards', 'public');
+            $data['image'] = '/storage/' . $file;
+        }
+
+        $new = (new AwardsService())->create($data);
+        $new = isset($new['success']) ? ['success' => $new['success']] : ['error' => $new['error']];
+
+        return redirect()->back()->with($new);
     }
 
     public function update(UpdateAwardsRequest $request, Awards $awards)
