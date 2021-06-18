@@ -15,7 +15,7 @@ class CreateAwardsCodesTable extends Migration
     {
         Schema::create('awards_codes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('award_id')->constrained();
+            $table->foreignId('award_id')->constrained()->onDelete('cascade');;
             $table->text('code');
             $table->timestamps();
         });

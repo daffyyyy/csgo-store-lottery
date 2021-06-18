@@ -19,5 +19,8 @@ class Awards extends Model
         'description',
         'image',
         'cost',
+        'stock',
+        'type',
+        'days',
     ];
 }

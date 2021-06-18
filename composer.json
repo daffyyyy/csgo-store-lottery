@@ -10,8 +10,10 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "kanalumaddela/laravel-steam-login": "^2.5",
+        "laravel-lang/lang": "~8.0",
         "laravel/framework": "^8.40",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "nesbot/carbon": "^2.49"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",

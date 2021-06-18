@@ -16,9 +16,10 @@
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
-    
+
             <div class="hidden md:flex flex-col md:flex-row md:ml-auto mt-3 md:mt-0" id="navbar-collapse">
-                <a href="{{ route('home') }}" class="p-2 lg:px-4 md:mx-2 rounded {{ (strpos(Route::currentRouteName(), 'home') !== FALSE) ? 'bg-indigo-600' : 'hover:bg-indigo-600' }}">
+                <a href="{{ route('home') }}"
+                    class="p-2 lg:px-4 md:mx-2 rounded {{ strpos(Route::currentRouteName(), 'home') !== false ? 'bg-indigo-600' : 'hover:bg-indigo-600' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block mr-2" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -34,7 +35,8 @@
                 @endguest
 
                 @auth
-                    <a href="{{ route('awards.index') }}" class="p-2 lg:px-4 md:mx-2 rounded transition-colors duration-300 {{ (strpos(Route::currentRouteName(), 'awards.index') !== FALSE) ? 'bg-indigo-600' : 'hover:bg-indigo-600' }}">
+                    <a href="{{ route('awards.index') }}"
+                        class="p-2 lg:px-4 md:mx-2 rounded transition-colors duration-300 {{ strpos(Route::currentRouteName(), 'awards.index') !== false ? 'bg-indigo-600' : 'hover:bg-indigo-600' }}">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block mr-2" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -47,6 +49,7 @@
                         role="navigation" aria-haspopup="true"><i class="fa fa-user"></i>&nbsp;&nbsp;<strong
                             class="text-white">Konto <i class="fas fa-sort-down"></i></strong>
                         <ul class="absolute hidden w-auto" aria-label="submenu">
+                            <li><a href="{{ route('user.awards') }}">Twoje nagrody</a></li>
                             <li><a href="{{ route('user.settings') }}">Ustawienia</a></li>
                             <li><a href="{{ route('logout') }}">Wyloguj</a></li>
                         </ul>
@@ -57,14 +60,20 @@
                             class="fas fa-dollar-sign"></i>&nbsp;&nbsp;<strong
                             class="text-white">{{ auth()->user()->coins }}</strong></button>
 
-                    <a href="#" class="p-2 lg:px-4 md:mx-2 rounded hover:bg-indigo-600 transition-colors duration-300 border border-red-900">
+                    <button
+                        class="p-2 lg:px-4 md:mx-2 text-indigo-600 text-center border border-solid border-indigo-600 rounded hover:bg-indigo-600 hover:text-gray-200 transition-colors duration-300 mt-1 md:mt-0 md:ml-1 dropdown:block">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                         </svg>
-                        Admin
-                    </a>
+                        <strong class="text-white">Admin
+                            <i class="fas fa-sort-down"></i></strong>
+                        <ul class="absolute hidden w-auto" aria-label="submenu">
+                            <li><a href="{{ route('admin.awards') }}">Nagrody</a></li>
+                            <li><a href="{{ route('admin.awards') }}">Użytkownicy</a></li>
+                        </ul>
+                    </button>
 
                 @endauth
             </div>
@@ -77,6 +86,15 @@
             role="alert">
             <span class="flex rounded-full bg-green-700 uppercase px-2 py-1 text-xs font-bold mr-3">Sukces</span>
             <span class="font-semibold mr-2 text-left flex-auto">{!! session('success') !!}</span>
+        </div>
+    </div>
+@endif
+@if (session('error'))
+    <div class="text-center py-4 lg:px-4">
+        <div class="p-2 bg-red-600 items-center text-red-200 leading-none lg:rounded-full flex lg:inline-flex"
+            role="alert">
+            <span class="flex rounded-full bg-red-700 uppercase px-2 py-1 text-xs font-bold mr-3">Błąd</span>
+            <span class="font-semibold mr-2 text-left flex-auto">{!! session('error') !!}</span>
         </div>
     </div>
 @endif

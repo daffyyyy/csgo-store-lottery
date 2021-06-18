@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Awards;
+use App\Services\AwardsService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
 
 class AwardsController extends Controller
 {
@@ -17,7 +15,7 @@ class AwardsController extends Controller
      */
     public function index()
     {
-        $awards = Awards::where('stock', '=', 100)->get();
+        $awards = Awards::where('stock', '>', 1)->get()->sortByDesc('id');
 
         return view('awards.index')->with('awards', $awards);
     }
@@ -88,32 +86,17 @@ class AwardsController extends Controller
         //
     }
 
+    /**
+     * Let user claim award.
+     * @param  \App\Models\Awards  $awards
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function redeem(Awards $awards)
     {
-        if (!$awards->stock || $awards->cost > auth()->user()->coins) return redirect()->back()->with('error', 'Nie kombinuj!');
-        // $awards->stock--;
-        $awards->save();
+        $data = (New AwardsService())->redeem($awards);
 
-        $user = User::find(auth()->user()->id);
+        if (isset($data['error'])) return redirect()->back()->with('error', $data['error']);
 
-        $user->coins -= $awards->cost;
-        $user->save();
-
-        $msg = 'Odebrałeś <strong class="uppercase">' . $awards->name . '</strong>!';
-        $status = TRUE;
-
-        switch ($awards->type) {
-            case 1:
-                $code = DB::select('SELECT `code` FROM `awards_codes` WHERE `award_id` = ? LIMIT 1', [$awards->id]);
-
-                $msg .= ' Twój kod to: <strong class="drop-shadow uppercase">' . $code[0]->code . '</strong>';
-                break;
-            case 2:
-                break;
-        }
-
-        DB::insert('INSERT into `awards_redeem` (`user_id`, `award_id`, `status`, `created_at`, `updated_at`) values (?, ?, ? ,?, ?)', [auth()->user()->id, $awards->id, $status ,now(), now()]);
-
-        return redirect()->back()->with('success', $msg);
+        return redirect()->back()->with('success', $data['success']);
     }
 }

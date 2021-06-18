@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Services\AwardsService;
+use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View as ViewView;
 
 class UserController extends Controller
 {
@@ -15,23 +19,21 @@ class UserController extends Controller
      */
     public function index()
     {
-        return 1;
+        //
     }
 
-    public function userRedeem()
+    /**
+     * Display user awards.
+     *
+     * @return \Illuminate\View
+     */
+
+    public function awards()
     {
-        $awards = DB::table('awards')
-        ->join('awards_redeem', 'awards.id', '=', 'awards_redeem.award_id')
-        ->where('awards_redeem.user_id', '=', auth()->user()->id)
-        ->orderByDesc('awards_redeem.created_at')
-        ->get();
+        $awards = (new AwardsService())->getUserAwards(auth()->user()->id, 10);
 
-        dd($awards);
-        die();
-
-        return view('awards.index')->with('awards', $awards);
+        return view('user.awards')->with('awards', $awards);
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -94,8 +96,9 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy()
     {
+        $user = User::find(Auth::user()->id);
         $user->delete();
         return redirect(route('home'))->with('success', 'Konto zostało usunięte!');
     }

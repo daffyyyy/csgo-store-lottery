@@ -14,7 +14,7 @@ class AddCoinsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->mediumInteger('coins')->default('0');
+            $table->bigInteger('coins')->default('0');
         });
     }
 

@@ -40,7 +40,7 @@
                     <tr>
                         <th class="p-3 font-bold uppercase text-indigo-600 hidden lg:table-cell">Ikona</th>
                         <th class="p-3 font-bold uppercase text-indigo-600 hidden lg:table-cell">Opis</th>
-                        <th class="p-3 font-bold uppercase text-indigo-600 hidden lg:table-cell">Punkty</th>
+                        <th class="p-3 font-bold uppercase text-indigo-600 hidden lg:table-cell">Cena</th>
                         <th class="p-3 font-bold uppercase text-indigo-600 hidden lg:table-cell">Akcja</th>
                     </tr>
                 </thead>
@@ -59,7 +59,7 @@
                             </td>
                             <td class="w-full lg:w-auto p-3 text-white text-center block lg:table-cell relative lg:static">
                                 <span
-                                    class="lg:hidden absolute top-0 left-0 bg-indigo-600 px-2 py-1 text-xs font-bold uppercase">Punkty</span>
+                                    class="lg:hidden absolute top-0 left-0 bg-indigo-600 px-2 py-1 text-xs font-bold uppercase">Cena</span>
                                 <button
                                     class="whitespace-nowrap p-2 lg:px-4 md:mx-2 text-indigo-600 text-center border border-solid border-indigo-600 rounded hover:bg-indigo-600 hover:text-gray-200 transition-colors duration-300 mt-1 md:mt-0 md:ml-1"><i
                                         class="fas fa-dollar-sign"></i>&nbsp;&nbsp;<strong

@@ -1,18 +1,18 @@
 module.exports = {
-  purge: [
-    './resources/**/*.blade.php',
-    './resources/**/*.js',
-    './resources/**/*.vue',
-  ],
- darkMode: 'class', // or 'media' or 'class'
+    purge: [
+        "./resources/**/*.blade.php",
+        "./resources/**/*.js",
+        "./resources/**/*.vue",
+    ],
+    darkMode: "class", // or 'media' or 'class'
   theme: {
     extend: {},
   },
-  variants: {
-    extend: {},
-    display: ['responsive', 'dropdown'],
-  },
-  plugins: [
-    require('tailwindcss-dropdown')
-  ],
-}
+    variants: {
+        extend: {},
+        display: ["responsive", "dropdown"],
+    },
+    plugins: [
+        require("tailwindcss-dropdown"),
+    ],
+};

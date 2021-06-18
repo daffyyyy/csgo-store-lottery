@@ -6,12 +6,11 @@
     a,
     a:visited {
         @apply text-white;
-        @apply no-underline;
     }
     a:hover,
     a:focus {
         @apply text-indigo-500;
-        @apply underline;
+        @apply no-underline;
     }
     input {
         @apply bg-gray-900;
@@ -37,11 +36,11 @@
         @apply bg-indigo-700;
         @apply rounded-lg;
     }
-    .dropdown\:block ul>li {
+    .dropdown\:block ul > li {
         @apply px-4;
         @apply py-2;
     }
-    .dropdown\:block ul>li:hover {
+    .dropdown\:block ul > li:hover {
         @apply bg-indigo-800;
         @apply rounded-lg;
     }

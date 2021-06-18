@@ -15,8 +15,8 @@ class CreateAwardsRedeemTable extends Migration
     {
         Schema::create('awards_redeem', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('award_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('award_id')->constrained()->onDelete('cascade');;
             $table->boolean('status')->default(FALSE);
             $table->timestamps();
         });
