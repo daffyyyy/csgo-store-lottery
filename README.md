@@ -14,6 +14,7 @@ Strona pozwoli Ci na dodawanie nagród które później gracze mogą odebrać za
 - Odbieranie nagród
 - Ręczne zatwierdzanie nagród (TODO)
 - Lista użytkowników i ich edycja (TODO)
+- Plugin na serwer (TODO)
 
 ![Strona główna](https://i.imgur.com/0ckUP5b.png)
 ![Lista nagród](https://i.imgur.com/kaeSwzX.png)
