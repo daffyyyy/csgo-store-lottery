@@ -33,6 +33,8 @@
             </div>
         </div>
 
+        <a href="{{ route('admin.awards.add') }}" class="p-2 lg:px-4 md:mx-2 rounded transition-colors duration-300 bg-indigo-600">Dodaj nagrodę</a>
+
         <div class="relative p-4 text-center">
 
             <table class="border-collapse w-full">
