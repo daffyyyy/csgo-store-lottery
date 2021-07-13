@@ -11,6 +11,7 @@ class AwardsService
 {
     private bool $status = TRUE;
     private array $data = [];
+    // Fetch from database (dev code)
     public array $types = [1 => 'Kod', 2 => 'VIP', 3 => 'Manual'];
 
     public function redeem(Awards $award)
@@ -52,7 +53,7 @@ class AwardsService
         $award->stock--;
         $award->save();
 
-        $user = User::find(auth()->user()->id);
+        $user = User::find(auth()->id());
 
         $user->coins -= $award->cost;
         $user->save();
