@@ -1,3 +1,4 @@
+## Discontinued & Unfinished
 # csgo-store-lottery
 ## Nagradzaj graczy za grę na twoim serwerze csgo
 
